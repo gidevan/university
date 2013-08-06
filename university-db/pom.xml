@@ -9,7 +9,7 @@
 
     <parent>
         <groupId>org.vano.projects.university</groupId>
-        <artifactId>university-common</artifactId>
+        <artifactId>university</artifactId>
         <version>1.0</version>
     </parent>
 
