@@ -1,4 +1,4 @@
-package org.vano.projects.university.dao.teacher;
+package org.vano.projects.university.dao.entity;
 
 import org.vano.projects.university.common.domain.Course;
 import org.vano.projects.university.common.domain.Teacher;
@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.List;
 
 /**
@@ -18,11 +19,13 @@ import java.util.List;
  */
 @Entity
 @Table(schema = "university", name = "teacher")
-public class TeacherEntity implements Teacher {
+public class TeacherEntity implements BaseEntity {
     @Id
+    @Column(name = "teacher_id")
     private String id;
     @Column(name = "name")
     private String name;
+    @Transient
     private List<Course> courses;
 
     public String getId() {
