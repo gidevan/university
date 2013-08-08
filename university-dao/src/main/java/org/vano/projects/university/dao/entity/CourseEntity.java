@@ -3,6 +3,7 @@ package org.vano.projects.university.dao.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +23,9 @@ public class CourseEntity implements BaseEntity<String> {
     @Column(name = "name")
     private String name;
 
+    @ManyToOne
+    private TeacherEntity teacher;
+
     public String getId() {
         return id;
     }
@@ -36,5 +40,13 @@ public class CourseEntity implements BaseEntity<String> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public TeacherEntity getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(TeacherEntity teacher) {
+        this.teacher = teacher;
     }
 }

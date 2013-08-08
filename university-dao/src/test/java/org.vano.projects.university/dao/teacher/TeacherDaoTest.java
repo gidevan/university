@@ -7,7 +7,10 @@ import org.testng.annotations.Test;
 import org.vano.projects.domain.teacher.TeacherImpl;
 import org.vano.projects.university.common.domain.Teacher;
 import org.vano.projects.university.dao.BaseDaoTest;
+import org.vano.projects.university.dao.entity.CourseEntity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -34,17 +37,19 @@ public class TeacherDaoTest extends BaseDaoTest<String, Teacher> {
      */
     //@Test
     public void testInsertTeacher() {
-        Teacher teacher = createEntity();
-        baseDao.insert(teacher);
+        Teacher teacher1 = createTeacher("1", "Teacher_1");
+        Teacher teacher2 = createTeacher("2", "Teacher_2");
+        Teacher teacher3 = createTeacher("3", "Teacher_3");
+        baseDao.insert(teacher1);
+        baseDao.insert(teacher2);
+        baseDao.insert(teacher3);
     }
 
     @Override
     protected Teacher createEntity() {
-        Teacher teacher = new TeacherImpl();
         String id = UUID.randomUUID().toString();
-        teacher.setId(id);
-        teacher.setName(TEST_NAME_PREFIX + id.substring(0, 1));
-        return teacher;
+        String name = TEST_NAME_PREFIX + id.substring(0, 1);
+        return createTeacher(id, name);
     }
 
     @Override
@@ -66,5 +71,24 @@ public class TeacherDaoTest extends BaseDaoTest<String, Teacher> {
     @Override
     protected void updateEntity(Teacher entity) {
         entity.setName(TEST_UPDATED_NAME);
+    }
+
+    private Teacher createTeacher(String id, String name) {
+        Teacher teacher = new TeacherImpl();
+        teacher.setId(id);
+        teacher.setName(name);
+        return teacher;
+    }
+
+    private List<CourseEntity> createCourseList() {
+        List<CourseEntity> courses = new ArrayList<>();
+        return courses;
+    }
+
+    private CourseEntity createCourse(String id, String name) {
+        CourseEntity course = new CourseEntity();
+        course.setId(id);
+        course.setName(name);
+        return course;
     }
 }

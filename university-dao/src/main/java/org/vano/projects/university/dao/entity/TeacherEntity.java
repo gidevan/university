@@ -5,6 +5,9 @@ import org.vano.projects.university.common.domain.Course;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.List;
@@ -24,8 +27,11 @@ public class TeacherEntity implements BaseEntity<String> {
     private String id;
     @Column(name = "name")
     private String name;
-    @Transient
-    private List<Course> courses;
+
+    @OneToMany(mappedBy = "teacher")
+    @JoinTable(schema = "university", name = "teacher_course", joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private List<CourseEntity> courses;
 
     public String getId() {
         return id;
@@ -43,11 +49,11 @@ public class TeacherEntity implements BaseEntity<String> {
         this.name = name;
     }
 
-    public List<Course> getCourses() {
+    public List<CourseEntity> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<Course> courses) {
+    public void setCourses(List<CourseEntity> courses) {
         this.courses = courses;
     }
 }
