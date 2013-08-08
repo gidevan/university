@@ -18,6 +18,7 @@
         <property name="hibernate.show_sql">true</property>
         <mapping class="org.vano.projects.university.dao.entity.TeacherEntity"/>
         <mapping class="org.vano.projects.university.dao.entity.StudentEntity"/>
+        <mapping class="org.vano.projects.university.dao.entity.CourseEntity"/>
     </session-factory>
 
 </hibernate-configuration>

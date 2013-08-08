@@ -1,9 +1,12 @@
 package org.vano.projects.university.dao.util;
 
+import org.vano.projects.domain.course.CourseImpl;
 import org.vano.projects.domain.student.StudentImpl;
 import org.vano.projects.domain.teacher.TeacherImpl;
+import org.vano.projects.university.common.domain.Course;
 import org.vano.projects.university.common.domain.Student;
 import org.vano.projects.university.common.domain.Teacher;
+import org.vano.projects.university.dao.entity.CourseEntity;
 import org.vano.projects.university.dao.entity.StudentEntity;
 import org.vano.projects.university.dao.entity.TeacherEntity;
 
@@ -45,5 +48,19 @@ public final class EntityConverter {
         student.setId(entity.getId());
         student.setName(entity.getName());
         return student;
+    }
+
+    public static Course convertCourseEntityToDomain(CourseEntity entity) {
+        Course course = new CourseImpl();
+        course.setId(entity.getId());
+        course.setName(entity.getName());
+        return course;
+    }
+
+    public static CourseEntity convertCourseToEntity(Course course) {
+        CourseEntity entity = new CourseEntity();
+        entity.setId(course.getId());
+        entity.setName(course.getName());
+        return entity;
     }
 }
