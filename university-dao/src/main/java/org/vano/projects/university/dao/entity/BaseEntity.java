@@ -7,10 +7,10 @@ package org.vano.projects.university.dao.entity;
  * Time: 10:41 AM
  * To change this template use File | Settings | File Templates.
  */
-public interface BaseEntity {
+public interface BaseEntity<T> {
 
-    String getId();
+    T getId();
 
-    void setId(String id);
+    void setId(T id);
 
 }

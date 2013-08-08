@@ -17,6 +17,7 @@
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
         <mapping class="org.vano.projects.university.dao.entity.TeacherEntity"/>
+        <mapping class="org.vano.projects.university.dao.entity.StudentEntity"/>
     </session-factory>
 
 </hibernate-configuration>

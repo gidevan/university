@@ -12,15 +12,16 @@ import java.util.List;
 /**
  * Created with IntelliJ IDEA.
  * User: Ivan_Pukhau
- * Date: 8/6/13
- * Time: 6:26 PM
+ * Date: 8/8/13
+ * Time: 10:44 AM
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(schema = "university", name = "teacher")
-public class TeacherEntity implements BaseEntity<String> {
+@Table(schema = "university", name = "student")
+public class StudentEntity implements BaseEntity<String> {
+
     @Id
-    @Column(name = "teacher_id")
+    @Column(name = "student_id")
     private String id;
     @Column(name = "name")
     private String name;
@@ -47,7 +48,7 @@ public class TeacherEntity implements BaseEntity<String> {
         return courses;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setCourses(List<Course> corses) {
+        this.courses = corses;
     }
 }
