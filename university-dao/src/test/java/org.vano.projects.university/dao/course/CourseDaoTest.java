@@ -32,7 +32,7 @@ public class CourseDaoTest extends BaseDaoTest<String, Course> {
      * Method for creating courses.
      */
     //@Test
-    public void testInsert() {
+    public void testInsertCourse() {
         Course course1 = createCourse("1", "Math");
         Course course2 = createCourse("2", "History");
         Course course3 = createCourse("3", "Spanish");

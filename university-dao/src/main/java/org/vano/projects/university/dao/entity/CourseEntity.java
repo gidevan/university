@@ -1,8 +1,12 @@
 package org.vano.projects.university.dao.entity;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,7 +27,10 @@ public class CourseEntity implements BaseEntity<String> {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinTable(schema = "university", name ="teacher_course",
+            joinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "course_id")},
+            inverseJoinColumns = {@JoinColumn(name = "teacher_id", referencedColumnName = "teacher_id")})
     private TeacherEntity teacher;
 
     public String getId() {

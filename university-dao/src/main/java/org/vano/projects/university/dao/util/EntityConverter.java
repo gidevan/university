@@ -10,6 +10,10 @@ import org.vano.projects.university.dao.entity.CourseEntity;
 import org.vano.projects.university.dao.entity.StudentEntity;
 import org.vano.projects.university.dao.entity.TeacherEntity;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ivan_Pukhau
@@ -26,6 +30,13 @@ public final class EntityConverter {
         TeacherEntity entity = new TeacherEntity();
         entity.setId(teacher.getId());
         entity.setName(teacher.getName());
+        if(teacher.getCourses() != null && !teacher.getCourses().isEmpty()) {
+            List<CourseEntity> courses = new ArrayList<>();
+            for(Course course : teacher.getCourses()) {
+                courses.add(convertCourseToEntity(course));
+            }
+            entity.setCourses(courses);
+        }
         return entity;
     }
 
@@ -33,6 +44,13 @@ public final class EntityConverter {
         Teacher teacher = new TeacherImpl();
         teacher.setId(entity.getId());
         teacher.setName(entity.getName());
+        if(entity.getCourses() != null && !entity.getCourses().isEmpty()) {
+            List<Course> list = new ArrayList<>();
+            for(CourseEntity course : entity.getCourses()) {
+                list.add(convertCourseEntityToDomain(course));
+            }
+            teacher.setCourses(list);
+        }
         return teacher;
     }
 
