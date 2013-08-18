@@ -2,9 +2,15 @@ package org.vano.projects.university.dao.entity;
 
 import org.vano.projects.university.common.domain.Course;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.List;
@@ -25,8 +31,13 @@ public class StudentEntity implements BaseEntity<String> {
     private String id;
     @Column(name = "name")
     private String name;
-    @Transient
-    private List<Course> courses;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(schema = "university", name = "student_course",
+            joinColumns = {
+                    @JoinColumn(name = "student_id", referencedColumnName = "student_id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "course_id", referencedColumnName = "course_id")})
+    private List<CourseEntity> courses;
 
     public String getId() {
         return id;
@@ -44,11 +55,11 @@ public class StudentEntity implements BaseEntity<String> {
         this.name = name;
     }
 
-    public List<Course> getCourses() {
+    public List<CourseEntity> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<Course> corses) {
+    public void setCourses(List<CourseEntity> corses) {
         this.courses = corses;
     }
 }

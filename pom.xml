@@ -16,6 +16,7 @@
 	    <module>university-domain</module>
         <module>university-service</module>
         <module>university-dao</module>
+        <module>university-web</module>
     </modules>
     <build>
         <plugins>

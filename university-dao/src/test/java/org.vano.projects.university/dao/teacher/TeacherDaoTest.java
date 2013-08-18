@@ -13,6 +13,7 @@ import org.vano.projects.university.common.domain.Teacher;
 import org.vano.projects.university.dao.BaseDaoTest;
 import org.vano.projects.university.dao.course.CourseDaoImpl;
 import org.vano.projects.university.dao.entity.CourseEntity;
+import org.vano.projects.university.dao.util.TestDaoUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +49,9 @@ public class TeacherDaoTest extends BaseDaoTest<String, Teacher> {
      */
     //@Test
     public void testInsertTeacher() {
-        Teacher teacher1 = createTeacher("1", "Teacher_1");
-        Teacher teacher2 = createTeacher("2", "Teacher_2");
-        Teacher teacher3 = createTeacher("3", "Teacher_3");
+        Teacher teacher1 = TestDaoUtils.createTeacher("1", "Teacher_1");
+        Teacher teacher2 = TestDaoUtils.createTeacher("2", "Teacher_2");
+        Teacher teacher3 = TestDaoUtils.createTeacher("3", "Teacher_3");
         baseDao.insert(teacher1);
         baseDao.insert(teacher2);
         baseDao.insert(teacher3);
@@ -61,8 +62,8 @@ public class TeacherDaoTest extends BaseDaoTest<String, Teacher> {
      */
     @Test
     public void testCreateTeacherWithCourse() {
-        Teacher teacher = createTeacher(TEST_TEACHER_ID, TEST_TEACHER_NAME);
-        teacher.setCourses(createCourseList());
+        Teacher teacher = TestDaoUtils.createTeacher(TEST_TEACHER_ID, TEST_TEACHER_NAME);
+        teacher.setCourses(TestDaoUtils.createCourseList(TEST_COURSE_ID, TEST_COURSE_NAME));
 
         courseDao.insert(teacher.getCourses().get(0));
         
@@ -89,7 +90,7 @@ public class TeacherDaoTest extends BaseDaoTest<String, Teacher> {
     protected Teacher createEntity() {
         String id = UUID.randomUUID().toString();
         String name = TEST_NAME_PREFIX + id.substring(0, 1);
-        return createTeacher(id, name);
+        return TestDaoUtils.createTeacher(id, name);
     }
 
     @Override
@@ -113,23 +114,5 @@ public class TeacherDaoTest extends BaseDaoTest<String, Teacher> {
         entity.setName(TEST_UPDATED_NAME);
     }
 
-    private Teacher createTeacher(String id, String name) {
-        Teacher teacher = new TeacherImpl();
-        teacher.setId(id);
-        teacher.setName(name);
-        return teacher;
-    }
 
-    private List<Course> createCourseList() {
-        List<Course> courses = new ArrayList<>();
-        courses.add(createCourse(TEST_COURSE_ID, TEST_COURSE_NAME));
-        return courses;
-    }
-
-    private Course createCourse(String id, String name) {
-        Course course = new CourseImpl();
-        course.setId(id);
-        course.setName(name);
-        return course;
-    }
 }

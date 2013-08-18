@@ -58,6 +58,13 @@ public final class EntityConverter {
         StudentEntity entity = new StudentEntity();
         entity.setId(student.getId());
         entity.setName(student.getName());
+        if(student.getCourses() != null && !student.getCourses().isEmpty()) {
+            List<CourseEntity> list = new ArrayList<>();
+            for(Course course : student.getCourses()) {
+                list.add(convertCourseToEntity(course));
+            }
+            entity.setCourses(list);
+        }
         return entity;
     }
 
@@ -65,6 +72,13 @@ public final class EntityConverter {
         Student student = new StudentImpl();
         student.setId(entity.getId());
         student.setName(entity.getName());
+        if(entity.getCourses() != null && !entity.getCourses().isEmpty()) {
+            List<Course> list = new ArrayList<>();
+            for(CourseEntity course : entity.getCourses()) {
+                list.add(convertCourseEntityToDomain(course));
+            }
+            student.setCourses(list);
+        }
         return student;
     }
 
