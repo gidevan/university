@@ -1,5 +1,6 @@
 package org.vano.projects.university.dao.teacher;
 
+import org.springframework.stereotype.Repository;
 import org.vano.projects.university.dao.BaseDaoImpl;
 import org.vano.projects.university.common.dao.teacher.TeacherDao;
 import org.vano.projects.university.common.domain.Teacher;
@@ -14,6 +15,7 @@ import org.vano.projects.university.dao.util.EntityConverter;
  * Time: 12:39 PM
  * To change this template use File | Settings | File Templates.
  */
+@Repository
 public class TeacherDaoImpl extends BaseDaoImpl<String, Teacher> implements TeacherDao {
 
     @Override

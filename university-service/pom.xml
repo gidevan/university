@@ -12,4 +12,17 @@
         <artifactId>university</artifactId>
         <version>1.0</version>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.vano.projects.university</groupId>
+            <artifactId>university-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 </project>

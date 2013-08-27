@@ -22,7 +22,7 @@
 
     <servlet-mapping>
         <servlet-name>university-servlet</servlet-name>
-        <servlet-pattern>/*</servlet-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
     <!--listener>
