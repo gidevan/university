@@ -1,4 +1,4 @@
-package org.vano.projects.university.rest;
+package org.vano.projects.university.rest.teacher;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.vano.projects.university.common.domain.Teacher;
 import org.vano.projects.university.common.service.TeacherService;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -30,6 +32,11 @@ public class TeacherRest {
         return teacher;
         //mav.addObject("teacher", teacher);
         //return mav;
+    }
+
+    @RequestMapping("/getteacherlist")
+    public @ResponseBody List<Teacher> getTeacherList() {
+        return teacherService.findAll();
     }
     
     
