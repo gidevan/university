@@ -33,4 +33,9 @@ public class CourseDaoImpl extends BaseDaoImpl<String, Course> implements Course
     protected String createFindByIdQuery(String id) {
         return "from CourseEntity C where C.id='" + id + "'";
     }
+
+    @Override
+    protected Class getEntityClass() {
+        return CourseEntity.class;
+    }
 }

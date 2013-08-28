@@ -1,11 +1,13 @@
 package org.vano.projects.university.dao;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.vano.projects.university.common.dao.BaseDao;
 import org.vano.projects.university.dao.entity.BaseEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,12 +62,32 @@ public abstract class BaseDaoImpl<I, T> implements BaseDao<I, T> {
         return findById(i) != null;
     }
 
+    @Override
+    public List<T> findAll() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(getEntityClass());
+        List result = criteria.list();
+        List<T> all = convertFindAllResult(result);
+        session.close();
+        return all;
+    }
+    
+    protected abstract Class getEntityClass();
 
     protected abstract BaseEntity convertDomainToEntity(T object);
 
     protected abstract T convertEntityToDomain(BaseEntity object);
 
     protected abstract String createFindByIdQuery(I id);
+    
+    private List<T> convertFindAllResult(List criteriaResult) {
+        List<T> result = new ArrayList<>();
+        for(Object entity : criteriaResult) {
+            result.add(convertEntityToDomain((BaseEntity)entity));
+        }
+        return result;
+    }
 
     private void saveOrUpdate(T object) {
         Session session = sessionFactory.openSession();

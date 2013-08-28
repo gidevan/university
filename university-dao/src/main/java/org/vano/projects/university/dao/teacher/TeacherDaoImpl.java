@@ -32,4 +32,9 @@ public class TeacherDaoImpl extends BaseDaoImpl<String, Teacher> implements Teac
     protected String createFindByIdQuery(String id) {
         return "from TeacherEntity T where T.id='" + id + "'";
     }
+
+    @Override
+    protected Class getEntityClass() {
+        return TeacherEntity.class;
+    }
 }

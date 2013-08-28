@@ -7,6 +7,7 @@ import org.vano.projects.university.common.domain.Teacher;
 import org.vano.projects.university.common.service.TeacherService;
 
 import javax.xml.ws.ServiceMode;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,5 +25,10 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public Teacher findById(String id) {
         return teacherDao.findById(id);
+    }
+
+    @Override
+    public List<Teacher> findAll() {
+        return teacherDao.findAll();
     }
 }

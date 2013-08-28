@@ -1,5 +1,7 @@
 package org.vano.projects.university.common.dao;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ivan_Pukhau
@@ -18,5 +20,7 @@ public interface BaseDao<ID, T> {
     void update(T object);
 
     boolean exists(ID id);
+
+    List<T> findAll();
 
 }

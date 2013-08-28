@@ -2,6 +2,8 @@ package org.vano.projects.university.common.service;
 
 import org.vano.projects.university.common.domain.Teacher;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ivan_Pukhau
@@ -12,4 +14,6 @@ import org.vano.projects.university.common.domain.Teacher;
 public interface TeacherService {
 
     Teacher findById(String id);
+
+    List<Teacher> findAll();
 }

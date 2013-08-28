@@ -32,4 +32,9 @@ public class StudentDaoImpl extends BaseDaoImpl<String, Student> implements Stud
     protected String createFindByIdQuery(String id) {
         return "from StudentEntity S where S.id='" + id + "'";
     }
+
+    @Override
+    protected Class getEntityClass() {
+        return StudentEntity.class;
+    }
 }

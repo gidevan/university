@@ -3,6 +3,8 @@ package org.vano.projects.university.dao;
 import org.testng.annotations.Test;
 import org.vano.projects.university.common.dao.BaseDao;
 
+import java.util.List;
+
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertNull;
 import static org.testng.AssertJUnit.assertTrue;
@@ -50,6 +52,24 @@ public abstract class BaseDaoTest<ID, T> {
         assertTrue(baseDao.exists(id));
         baseDao.delete(id);
         assertFalse(baseDao.exists(id));
+    }
+
+    @Test
+    public void testFindAll() {
+        T entity = insertEntity();
+        ID id = getId(entity);
+        List<T> all = baseDao.findAll();
+        assertTrue(all.size() >= 1);
+        boolean isIdExists = false;
+        for(T en : all) {
+            ID storedId = getId(en);
+            if (id.equals(storedId)) {
+                isIdExists = true;
+                break;
+            }
+        }
+        assertTrue(isIdExists);
+        baseDao.delete(id);
     }
 
     protected T insertEntity() {
