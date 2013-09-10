@@ -21,7 +21,7 @@ public class UniversityController {
     @Autowired
     private TeacherService teacherService;
 
-    @RequestMapping("/")
+    @RequestMapping("/universityInfo")
     public ModelAndView showProjectInfo(@RequestParam(value = "teacherid", required = false) String teacherId) {
         ModelAndView mav = new ModelAndView();
         if(teacherId != null) {
