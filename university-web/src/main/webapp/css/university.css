@@ -8,7 +8,25 @@
 }
 .gridStyle {
     //border: 1px solid rgb(212,212,212);
-    border: 1px solid green;
-    height: 300px;
+    border: 1px solid blue;
     width: 400px;
+    height: 250px;
+    margin: 5px;
+}
+
+.teacher-list, .student-list {
+    display: inline-block;
+    border: 1px solid green;
+    margin: 5px;
+}
+.teacher-list .col0:hover {
+    background-color: red;
+}
+
+.teacher-list .col1:hover {
+    background-color: green;
+}
+
+.teacher-list .col2:hover {
+    background-color: yellow;
 }

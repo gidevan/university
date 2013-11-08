@@ -1,20 +1,20 @@
 var university = angular.module('university', ['ngGrid']);
 university.controller('NgGridTableCtrl', function($scope, $http) {
-    //console.log("ng-grid controller");
     $scope.teachersList = [];
-    //$scope.teachersList = [{name: "Moroni", age: 50},
-    //                                       {name: "Tiancum", age: 43},
-    //                                       {name: "Jacob", age: 27},
-    //                                       {name: "Nephi", age: 29},
-    //                                       {name: "Enos", age: 34}];
+    $scope.studentsList = [];
     $scope.gridOptions = {data: 'teachersList'
             //columnDefs: [{field:'name', displayName:'Name'}, {field:'age', displayName:'Age'}]
     };
+    $scope.studentsOptinons = {data: 'studentsList'};
     $http.get("rest/getteacherlist").success(function(data) {
         $scope.teachersList = data;
         $scope.gridOptions = {data: 'teachersList'};
-    }
-)});
+    });
+    $http.get("rest/getstudentlist").success(function(data) {
+        $scope.studentsList = data;
+        $scope.studentsOptinons = {data: 'studentsList'};
+    });
+});
 
 function TeacherCtrl($scope, $http) {
     console.log("getTeacher");
