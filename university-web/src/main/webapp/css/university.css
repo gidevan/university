@@ -14,7 +14,7 @@
     margin: 5px;
 }
 
-.teacher-list, .student-list {
+.ng-grid-table-view .ng.teacher-list, .ng-grid-table-view .student-list {
     display: inline-block;
     border: 1px solid green;
     margin: 5px;
@@ -29,4 +29,8 @@
 
 .teacher-list .col2:hover {
     background-color: yellow;
+}
+
+.student-list .ngRow:hover {
+    background-color: blue;
 }
