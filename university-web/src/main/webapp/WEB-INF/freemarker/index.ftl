@@ -1,35 +1,21 @@
-<html ng-app>
+<html ng-app="university">
 <head>
     <meta charset="utf-8"/>
     <title>University application</title>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/university-web/css/lib/ng-grid.css"/>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/university-web/css/university.css"/>
+    <!--script src="http://localhost:8080/university-web/js/lib/jquery-2.0.3.js"></script-->
+    <script src="http://localhost:8080/university-web/js/lib/jquery-1.10.2.js"></script>
     <script src="http://localhost:8080/university-web/js/lib/angular/angular.js"></script>
     <script src="http://localhost:8080/university-web/js/app/university.js"></script>
+    <script src="http://localhost:8080/university-web/js/lib/ng-grid-2.0.7.debug.js"></script>
+
 </head>
 <body>
-    <div class="university-tabs">
-        <div class="teacher-tab" ng-controller="TeacherCtrl">
-            <p class="tab-title">Teacher list</p>
-            <input class="entity-input" value=""/>
-            <div class="teacher-list">
-                <ul>
-                    <li ng-repeat="teacher in teachers">
-                        <p>{{teacher.id}}</p><p>{{teacher.name}}</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="student-tab" ng-controller="StudentCtrl">
-            <p class="tab-title">Student list</p>
-            <input class="entity-input" value=""/>
-            <div class="student-list">
-                <ul>
-                    <li ng-repeat="student in students">
-                        <p>{{student.id}}</p><p>{{student.name}}</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div ng-controller="TestController">testValue={{testValue}}</div>
-    </div>
+    <#if view?? && view=="table-view">
+        <#include "/ng-grid-view/ng-grid-view.ftl">
+    <#else>
+        <#include "/simple-view/simple-view.ftl">
+    </#if>
 </body>
 </html>

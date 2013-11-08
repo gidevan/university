@@ -1,0 +1,14 @@
+.university-tabs .teacher-list {
+    color: red;
+}
+
+.ng-grid-table-view {
+    border: 2px solid red;
+    height: 500px;
+}
+.gridStyle {
+    //border: 1px solid rgb(212,212,212);
+    border: 1px solid green;
+    height: 300px;
+    width: 400px;
+}

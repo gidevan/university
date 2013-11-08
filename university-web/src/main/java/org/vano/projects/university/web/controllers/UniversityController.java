@@ -32,4 +32,16 @@ public class UniversityController {
         mav.setViewName("index");
         return mav;
     }
+
+    /**
+     * ng-grid table is used for getting information.
+     * @return
+     */
+    @RequestMapping("/tableView")
+    public ModelAndView showTableInfo() {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("view", "table-view");
+        mav.setViewName("index");
+        return mav;
+    }
 }
